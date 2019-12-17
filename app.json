@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/home/home"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "l-icon": "path/to/icon/index",
+    "l-card": "path/to/card/index",
+    "water-flow": "path/to/water-flow/index",
+    "l-price": "path/to/price/index",
+    "l-grid":"miniprogram_npm/lin-ui/grid/index",
+    "l-grid-item":"miniprogram_npm/lin-ui/grid-item/index",
+    "l-water-flow":"miniprogram_npm/lin-ui/water-flow/index"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

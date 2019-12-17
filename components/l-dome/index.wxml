@@ -1,0 +1,11 @@
+<l-card full type="cover" image="{{data.image}}" title="{{data.title}}" l-class="life-container" l-img-class="life-img"
+        l-title-class="life-title" bindtap="onProduct">
+  <view class='life-product-contianer'>
+    <view class='art-content'>{{data.describe}}</view>
+    <view class='price-container'>
+      <l-price unit="￥" value="{{data.count}}" value-color="#ad0e11" unit-color="#ad0e11" value-size="36"></l-price>
+      <l-price l-class="del-price" unit="￥" value="{{data.delCount}}" value-color="#ad0e11" unit-color="#ad0e11" deleted
+               del-color="#666" value-color="#666" unit-color="#666"></l-price>
+    </view>
+  </view>
+</l-card>
