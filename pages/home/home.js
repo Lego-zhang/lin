@@ -1,10 +1,9 @@
 // pages/home/home.js
-
-
 import {Theme} from "../../model/Theme";
 import {Banner} from "../../model/Banner";
 import {Category} from "../../model/Category";
 import {Activity} from "../../model/Activity1";
+import {SpuPaging} from "../../model/spu-paging";
 
 Page({
 
@@ -27,6 +26,7 @@ Page({
   onLoad: function (options) {
 
     this.initAllData()
+    this.initBottomSpuList()
   },
   async initAllData() {
     const theme = new Theme();
@@ -67,6 +67,13 @@ Page({
     })
   },
   async initBottomSpuList() {
+    const paging = await SpuPaging.getLatestPaging()
+    const data = await paging.getMoreData()
+    if (!data){
+      return
+    }
+    console.log(data)
+    wx.lin.renderWaterFlow(data.items)
   },
 
   /**

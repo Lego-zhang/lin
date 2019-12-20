@@ -23,7 +23,9 @@ class Paging {
 
   url;
 
-  moreData;
+  moreData = true;
+
+  accumulator = [];
 
   constructor(req, count = 10, start = 0) {
     this.start = start;
@@ -33,22 +35,27 @@ class Paging {
 
   }
 
-  getMoreData() {
+  async getMoreData() {
     // 生成器 Generator
     // 数据锁 getLocker
     // releaseLocker
     // 只有锁打开才能进行请求
+
+    if (!this.moreData) {
+      return
+    }
     if (!this._getLocker()) {
       return
     }
-    this._actualGetData();
+    const data = await this._actualGetData();
     this._releaseLocker();
+    return data
   }
 
   // 发送请求
-  _actualGetData() {
+  async _actualGetData() {
     const req = this._getCurrentReq();
-    let paging = Http.request(req);
+    let paging = await Http.request(req);
     if (!paging) {
       return null
     }
@@ -69,18 +76,32 @@ class Paging {
       }
     }
 
-    this.moreData = this._moreData(paging.total_page, paging.page)
+    this.moreData = Paging._moreData(paging.total_page, paging.page)
+
+    if (this.moreData) {
+      this.start += this.count
+    }
+    this._accumulate(paging.items);
+    return {
+      empty: false,
+      items: paging.items,
+      moreData: this.moreData,
+      accumulator: this.accumulator
+    }
+
     // return {
     //   empty: boolean,
     //   items: [],
     //   moreData: boolean,
     //   accumulator: []
     // }
-
-
   }
 
-  _moreData(totalPage, pageNum) {
+  _accumulate(items) {
+    this.accumulator = this.accumulator.concat(items)
+  }
+
+  static _moreData(totalPage, pageNum) {
     return pageNum < totalPage - 1
   }
 
@@ -90,7 +111,7 @@ class Paging {
     // url = 'v1/spu/latest' + '?' + params
     // url = 'v1/spu/latest?other=abc' + '&' + params
 
-    if (url.indexOf('?') !== -1) {
+    if (url.includes('?')) {
       url += '&' + params
     } else {
       url += '?' + params
@@ -111,6 +132,10 @@ class Paging {
   }
 
   _releaseLocker() {
-
+    this.locker = false
   }
+}
+
+export {
+  Paging
 }

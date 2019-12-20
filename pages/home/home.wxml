@@ -15,9 +15,9 @@
   <s-category-grid grid="{{grid}}"></s-category-grid>
   <image class="activity" src="{{activityD.entrance_img}}"></image>
   <s-spu-scroll
-      wx:if="{{themeE.online}}"
-      theme="{{themeE}}"
-      spu-list="{{themeESpu}}"
+    wx:if="{{themeE.online}}"
+    theme="{{themeE}}"
+    spu-list="{{themeESpu}}"
   ></s-spu-scroll>
   <image class="quality" src="{{themeF.entrance_img}}"></image>
   <s-hot-list banner="{{bannerG}}"></s-hot-list>
@@ -25,6 +25,7 @@
 
   <view class="spu-bottom">
     <image class="title-spu-bottom" src="/imgs/home/title@interest.png"></image>
-    <l-water-flow  generic:l-water-flow-item=""></l-water-flow>
+
+    <l-water-flow generic:l-water-flow-item="s-spu-preview"></l-water-flow>
   </view>
 </view>
