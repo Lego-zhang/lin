@@ -9,7 +9,7 @@
 .content-container {
   display: flex;
   flex-direction: column;
-  padding:16rpx 16rpx 22rpx 16rpxgit;
+  padding:16rpx 16rpx 22rpx 16rpx;
 }
 
 .img {
