@@ -9,8 +9,8 @@
       </block>
       <view></view>
     </view>
-    <l-price></l-price>
-    <text></text>
+    <l-price value="{{data.price}}"></l-price>
+    <text>{{data.subtitle}}</text>
   </view>
 
 </view>

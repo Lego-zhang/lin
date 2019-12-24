@@ -1,4 +1,17 @@
 /* components/spu-preview/index.wxss */
+.container {
+  width: 340rpx;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 8px 0px rgba(119, 163, 159, 0.2);
+  margin-bottom: 30rpx;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  padding:16rpx 16rpx 22rpx 16rpxgit;
+}
+
 .img {
   width: 340rpx;
   height: 360rpx;
@@ -10,4 +23,10 @@
   height: 36rpx !important;
   padding-left: 6rpx !important;
   padding-right: 6rpx !important;
+  margin-right: 5rpx !important;
+}
+
+.title {
+  font-size: 28rpx;
+  color: #333333;
 }
