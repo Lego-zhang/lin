@@ -15,7 +15,7 @@
   height: 310rpx;
   display: flex;
   margin-bottom: 20rpx;
-} 
+}
 .quality {
   margin-top: 20rpx;
   margin-bottom: 20rpx;
@@ -34,6 +34,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 20rpx;
+  padding-top: 30rpx;
+  background: #ffffff;
 }
 .title-spu-bottom{
   width: 690rpx;

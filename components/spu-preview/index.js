@@ -14,7 +14,9 @@ Component({
    * 组件的初始数据
    */
   data: {
-    tags: []
+    tags: [],
+    w: null,
+    h: null
   },
   observers: {
     data: function (data) {
@@ -33,5 +35,14 @@ Component({
   /**
    * 组件的方法列表
    */
-  methods: {}
+  methods: {
+    onImgLoad(event) {
+      const {width, height} = event.detail
+      console.log(width, height)
+      this.setData({
+        w: 340,
+        h: 340 * width / height
+      })
+    }
+  }
 })

@@ -17,7 +17,9 @@ Page({
     grid: [],
     activityD: null,
     themeESpu: [],
-    themeF: null
+    themeF: null,
+    spuPaging: null,
+    loadingType: 'loading'
   },
 
   /**
@@ -63,13 +65,17 @@ Page({
       bannerB,
       bannerG,
       grid,
-      activityD
+      activityD,
     })
   },
   async initBottomSpuList() {
     const paging = await SpuPaging.getLatestPaging()
+
+    this.data.spuPaging = paging
+
     const data = await paging.getMoreData()
-    if (!data){
+
+    if (!data) {
       return
     }
     console.log(data)
@@ -114,8 +120,18 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: async function () {
+    const data = await this.data.spuPaging.getMoreData()
+    if (!data) {
+      return
+    }
+    wx.lin.renderWaterFlow(data.items)
 
+    if (!data.moreData) {
+      this.setData({
+        loadingType: "end"
+      })
+    }
   },
 
   /**
