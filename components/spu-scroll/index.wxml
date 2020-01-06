@@ -1,4 +1,6 @@
 <!--components/spu-scroll/index.wxml-->
+<wxs src="../../wxs/price.wxs" module="p"></wxs>
+
 <view class="container">
   <image class="title" src="{{theme.title_img}}"></image>
   <scroll-view scroll-x class="scroll-view">
@@ -9,11 +11,10 @@
           <text class="spu-text" >{{item.title}}</text>
           <l-price
               autofix
-              value="{{item.price}}"
+              value="{{p.mainPrice(item.price,item.discount_price).price}}"
               l-value-class="price-value"
               l-unit-class="price-unit"
           ></l-price>
-
         </view>
       </block>
     </view>

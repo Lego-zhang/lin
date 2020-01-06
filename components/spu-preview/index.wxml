@@ -1,7 +1,7 @@
 <!--components/spu-preview/index.wxml-->
 <wxs src="../../wxs/price.wxs" module="p"></wxs>
 
-<view class="container">
+<view class="container" data-pid="{{data.id}}" bind:tap="onItemTap">
   <image style="width: {{w}}rpx;height: {{h}}rpx" bind:load="onImgLoad" mode="widthFix" src="{{data.img}}"></image>
   <view class="content-container">
     <text class="title">{{data.title}}</text>

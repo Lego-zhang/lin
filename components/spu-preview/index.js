@@ -13,6 +13,7 @@ Component({
   /**
    * 组件的初始数据
    */
+
   data: {
     tags: [],
     w: null,
@@ -42,6 +43,13 @@ Component({
       this.setData({
         w: 340,
         h: 340 * width / height
+      })
+    },
+    onItemTap(event) {
+      const pid = event.currentTarget.dataset.pid
+      console.log(pid)
+      wx.navigateTo({
+        url:`/pages/detail/detail?pid=${pid}`
       })
     }
   }
